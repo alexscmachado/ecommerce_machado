@@ -56,6 +56,15 @@ src --> components --> listItens --> CountItens.js.\
 Nessa entrega criamos uma pasta chamada "contexts" e nela criamos o documento "CartContext.js" que vamos utilizar para todo o processo de compra, nessa primeira parte realizamos o mapeamento para que quando o usuário adicionar o produto ao carrinho, armazenar, em forma de objeto, no CartContext.js e nele possui lógicas para adicionar remover produto, limpar todo o carrinho e verificação de item duplicado. Para isso, usamos o conceito de context para criar todo o processo.\
 Caminho da pasta: src --> contexts --> CartContext.js.\
 
+16/05/23-23/05/23.\
+Nessa entrega criamos uma pasta chamada "cart" e nela temos os documentos "Cart.js" e "CartPage.js" que vamos utilizar para todo o processo de compra. Para isso, realizamos toda a expansão do componente no documentos CartPage.js mostrando como será dividido o item na página do carrinho e atualizamos para que os arquivos, incluíndo-os no BrowserRouter.\
+Caminho da pasta: src --> components --> cart --> Cart.js e CartPage.js.\
+
+18/05/23-25/05/23.\
+Nessa entrega criamos uma ItemCollection no Google Firestore, na qual a coleção possui os seguintes atributos: categoryId, title, description, image, price, stock. Logo após, conectamos a coleção nos arquivos ListItensContents.js e ItemDetailsContainer.js, na qual eliminamos os async mocks (as promises) e substituímos pela coleção do Firestore.\
+Caminho da pasta ListItens: src --> components --> listItens --> ListItensContents.js.\
+Caminho da pasta Datails: src --> components --> datails --> ItemDetailsContainer.js.\
+
 ## Abaixo temos as informações gerais dos arquivos (Readme padrão):
 _______________________________________________________________________________________________________________________________________________________________________
 # Getting Started with Create React App
