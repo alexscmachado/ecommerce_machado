@@ -23,6 +23,8 @@ export default function CartContextProvider({defaultValue={}, children}) {
         setItens([]);
     }
 
+    const isInTheCart = (id) => itens.find(i => i.id === id);
+
     function getItemQtd(id){
         if (itens.id ===id){
             return itens.reduce((accumulator, currentValue) => parseInt(accumulator + currentValue.qtd), 0)
@@ -33,15 +35,15 @@ export default function CartContextProvider({defaultValue={}, children}) {
         return sumTotal +=p.qtd * parseInt(p.preco)
     },0)
 
-    function addToCart(id){
+    function addToCart(id, qtd){
         const cartItens = [...itens];
         const cartValid = cartItens.find((product) => product.id ===id);
 
         if (!cartValid) {
-            cartItens.push({id:id, qtd:1});
+            cartItens.push({id:id, qtd:qtd});
         } 
         else {
-            cartValid.qtd = parseInt(cartValid.qtd + 1);
+            cartValid.qtd = parseInt(cartValid.qtd + qtd);
         }
         setItens(cartItens);
     }
@@ -51,9 +53,15 @@ export default function CartContextProvider({defaultValue={}, children}) {
         const cartValid = cartItens.find((product) => product.id ===id);
 
         if(cartValid >1){
-            cartValid.qtd = parseInt(cartValid.qtd-1);
-            setItens(cartValid);
-        }else{
+            const updatedArray = cartItens.map(item => {
+                if (item?.id === id) {
+                    cartValid.qtd = parseInt(cartValid.qtd - 1);
+                    return cartValid;
+                }
+                return item;
+            });
+            setItens(updatedArray);
+        } else {
             const arrayFilter = cartItens.filter(product => product.id !== id);
             setItens(arrayFilter);
         }
@@ -61,7 +69,7 @@ export default function CartContextProvider({defaultValue={}, children}) {
      
 
     return(
-        <CartContext.Provider value={{itens, clear, getItemQtd,addToCart,removeCart}}>
+        <CartContext.Provider value={{itens, clear, getItemQtd, addToCart, removeCart, isInTheCart}}>
             {children}
         </CartContext.Provider>
     )
