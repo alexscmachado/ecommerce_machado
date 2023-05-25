@@ -10,6 +10,8 @@ export default function CartContextProvider({defaultValue={}, children}) {
     const [itens, setItens] = useState([]);
     //{id:1, ammount:5}, {id:2, ammount:7} - exemplo
     //const [item, setItem] = useState()
+    
+    const isInTheCart = (id) => itens.find(i => i.id === id);
 
     function clear(){
         setItens([]);
@@ -52,7 +54,7 @@ export default function CartContextProvider({defaultValue={}, children}) {
      
 
     return(
-        <CartContext.Provider value={{itens, clear, getItemQtd,addToCart,removeCart}}>
+        <CartContext.Provider value={{itens, clear, getItemQtd, addToCart, removeCart, isInTheCart}}>
             {children}
         </CartContext.Provider>
     )
