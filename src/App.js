@@ -9,7 +9,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBarCarrinho from './components/navbar/NavBarCarrinho';
 import NavBarLogin from './components/navbar/NavBarCarrinho';
 import CartContextProvider, { Cart, CartContext } from './contexts/CartContext';
-import { Carrinho } from './components/navbar/NavBarCarrinho';
+import Carrinho from './components/cart/CartPage';
 
 function App() {
   return (
@@ -21,9 +21,9 @@ function App() {
             <Routes>
               <Route exact path="/" element={<ListItensContents />} />;
               <Route exact path="/category/:categoryId" element={<ListItensContents />} />;
-              <Route exact path="/cart" element={<Carrinho></Carrinho>} />;
+              <Route exact path="/cart" element={<Carrinho />} />;
               <Route exact path="/item/:itemId" element={<ItemDetailsContainer />} />;
-              <Route exact path="/cart" element={<NavBarCarrinho />} />;
+              <Route exact path="/cart" element={<Carrinho />} />;
               <Route exact path="/cart" element={<NavBarLogin />} />;
               <Route exact path="/*" element={<p>"Página não encontrada"</p>} />
             </Routes>
