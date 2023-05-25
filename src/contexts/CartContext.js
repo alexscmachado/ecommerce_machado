@@ -53,12 +53,18 @@ export default function CartContextProvider({defaultValue={}, children}) {
         const cartValid = cartItens.find((product) => product.id ===id);
 
         if(cartValid >1){
-            cartValid.qtd = parseInt(cartValid.qtd-1);
-            setItens(cartValid);
-        }else{
-            const arrayFilter = cartItens.filter(product => product.id !== id);
-            setItens(arrayFilter);
-        }
+            const updatedArray = cartItens.map(item => {
+               if (item?.id === id) {
+                   cartValid.qtd = parseInt(cartValid.qtd - 1);
+                   return cartValid;
+               }
+               return item;
+           });
+           setItens(updatedArray);
+       } else {
+           const arrayFilter = cartItens.filter(product => product.id !== id);
+           setItens(arrayFilter);
+       }
     }
      
 
