@@ -11,8 +11,9 @@ function NavBarCarrinho() {
     const valor = useCartContext();
     console.log(valor)
 
-    let qdtProdutos = 0
-    valor.itens.forEach(p => qdtProdutos += p.ammount);
+    //let qdtProdutos = 0
+    const qtdProdutos = valor?.getItemQtd() || 0
+    //valor.itens.forEach(p => qdtProdutos += p.ammount);
 
     return (
         <Link to="/cart">
@@ -46,11 +47,13 @@ export function Carrinho(cardItem) {
     return (
         <div>
                 <CartItem  cardItem={itens} />
-                {/*<div>Quantidade é {getItemQtd()}</div>
+                <div>Quantidade é {getItemQtd()}</div>
             <ul>
-                {itens.map(p => <li key={p.id}>p.ammount</li>)}
+                {itens.map(p => <li key={p.id}>
+                    <p>Produto: {p?.id} - Qtd: {p.qtd}</p>
+                    <button className="buyButton btn btn-primary" onClick={() => removeCart(p.id)}>Remover Item</button>
+ </li>)}
             </ul>
-            <button className="buyButton btn btn-primary" onClick={() => removeCart()}>Remover Item</button>*/}
                 <p></p>
                 <Link><button className="buyButton btn btn-primary" onClick={() => clear()}>Esvaziar o Carrinho</button></Link>
         </div>
