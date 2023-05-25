@@ -22,6 +22,8 @@ export default function CartContextProvider({defaultValue={}, children}) {
     function clear(){
         setItens([]);
     }
+    
+    const isInTheCart = (id) => itens.find(i => i.id === id);
 
     function getItemQtd(id){
         if (itens.id ===id){
@@ -33,15 +35,15 @@ export default function CartContextProvider({defaultValue={}, children}) {
         return sumTotal +=p.qtd * parseInt(p.preco)
     },0)
 
-    function addToCart(id){
+    function addToCart(id, qtd){
         const cartItens = [...itens];
         const cartValid = cartItens.find((product) => product.id ===id);
 
         if (!cartValid) {
-            cartItens.push({id:id, qtd:1});
+            cartItens.push({id:id, qtd:qtd});
         } 
         else {
-            cartValid.qtd = parseInt(cartValid.qtd + 1);
+            cartValid.qtd = parseInt(cartValid.qtd + qtd);
         }
         setItens(cartItens);
     }
@@ -61,7 +63,7 @@ export default function CartContextProvider({defaultValue={}, children}) {
      
 
     return(
-        <CartContext.Provider value={{itens, clear, getItemQtd,addToCart,removeCart}}>
+        <CartContext.Provider value={{itens, clear, getItemQtd, addToCart, removeCart, isInTheCart}}>
             {children}
         </CartContext.Provider>
     )
