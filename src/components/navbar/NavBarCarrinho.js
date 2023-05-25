@@ -30,7 +30,10 @@ export function Carrinho() {
         <div>
             <div>A quantidade é {getItemQtd()}</div>
             <ul>
-                {itens.map(p => <li key={p.id}>p.ammount</li>)}
+                {itens.map(p => <li key={p.id}>
+                    <p>Produto: {p?.id} - Qtd: {p.qtd}</p>
+                    <button className="buyButton btn btn-primary" onClick={() => removeCart(p.id)}>Remover Item</button>
+                </li>)}
             </ul>
 
             <button className="buyButton btn btn-primary" onClick={() => removeCart()}>Remover Item</button>
