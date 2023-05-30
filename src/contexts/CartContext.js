@@ -50,7 +50,7 @@ export default function CartContextProvider({defaultValue={}, children}) {
        } else {
            const arrayFilter = cartItens.filter(product => product.id !== id);
            setItens(arrayFilter);
-       } 
+       } }
      
 
     return(
