@@ -28,7 +28,7 @@ function Carrinho(cardItem) {
 
     return (
         <div>
-            <CartItem cardItem={itens} />
+            {/*<CartItem cardItem={itens} />
             <div className="cardDetailImageContent">
                 {itens.map(p => <div key={p.id}><img src={p.imagem} className=" cardDetailsImage" alt="Foto Produto" /></div>)}
             </div>
@@ -39,6 +39,12 @@ function Carrinho(cardItem) {
                     <p>Qtd: {p.qtd}</p>
                     <button className="buyButton btn btn-primary" onClick={() => removeCart(p.id)}>Remover Item</button>
                 </li>)}
+            </ul>
+                <p></p>
+                <Link><button className="buyButton btn btn-primary" onClick={() => clear()}>Esvaziar o Carrinho</button></Link>*/}
+
+            <ul>
+                {itens.map(p => <li key={p.id}><CartItem cardItem={p} /></li>)}
             </ul>
             <p></p>
             <Link><button className="buyButton btn btn-primary" onClick={() => clear()}>Esvaziar o Carrinho</button></Link>

@@ -36,11 +36,13 @@ export default function CartContextProvider({defaultValue={}, children}) {
     },0)
 
     function addToCart(id, qtd){
+        const itemDetails = productsDetails.find(product => product.id === id)
         const cartItens = [...itens];
         const cartValid = cartItens.find((product) => product.id ===id);
 
         if (!cartValid) {
-            cartItens.push({id:id, qtd:qtd});
+            //cartItens.push({id:id, qtd:qtd});
+            cartItens.push({ ...itemDetails, qtd: qtd });
         } 
         else {
             cartValid.qtd = parseInt(cartValid.qtd + qtd);

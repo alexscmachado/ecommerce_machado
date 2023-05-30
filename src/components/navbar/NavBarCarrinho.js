@@ -9,12 +9,12 @@ function NavBarCarrinho() {
     console.log(valor)
 
     //let qdtProdutos = 0
-    const qdtProdutos = valor?.getItemQtd() || 0
+    const qtdProdutos = valor?.getItemQtd() || 0
     //valor.itens.forEach(p => qdtProdutos += p.ammount);
 
     return (
         <Link to="/cart">
-            <div className="qtdCarrinho">{qdtProdutos}</div>
+            <div className="qtdCarrinho">{qtdProdutos}</div>
             <BiShoppingBag className="carrinho" />
         </Link>
     )

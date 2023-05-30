@@ -28,7 +28,7 @@ function App() {
               <Route exact path="/cart" element={<NavBarLogin />} />;
               <Route exact path="/*" element={<p>"Página não encontrada"</p>} />
             </Routes>
-            <ListItensContents /> {/*Coloquei a tag aqui para visualizar na página*/}
+            {/*<ListItensContents /> {/*Coloquei a tag aqui para visualizar na página*/}
             <section>
             </section>
           </div>

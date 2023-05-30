@@ -2,7 +2,7 @@ import React,{useState,useEffect} from "react";
 import { productsDetails } from "./mockDetails/productsDetails";
 import ItemDetails from "./ItemDetails";
 import { useParams } from "react-router-dom";
-import {DocumentSnapshot, doc, getDoc, collection, getDocs, getFirestore} from 'firebase/firestore';
+import {DocumentSnapshot, doc, getDoc, collection, getDocs, getFirestore, where, query} from 'firebase/firestore';
 //import {collection, getDocs, getFirestore} from 'firebase/firestore';
 
 
@@ -33,6 +33,7 @@ function ItemDetailsContainer(){
         const db = getFirestore();
 
         const CardCollection = collection(db, "item");
+        //const CardCollection = query(collection(db, "item"),where("categoria","==",ProdDetail.id));
         getDocs(CardCollection).then((snapshot) => {
             if (snapshot.size > 0) {
                 const prodDet = snapshot.docs.map(prods => ({id: prods.id, ...prods.data()}))
