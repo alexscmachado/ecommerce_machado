@@ -9,6 +9,7 @@ function ItemDetails({ cardItem }) {
     const [ammount, setAmmount] = useState(1);
     const { addToCart, isInTheCart } = useCartContext();
     const naoAdicionado = !isInTheCart(cardItem.id);
+
     //const InputComponent = true ? CountItens : InputComponent;
 
     function handleOnChangeQtd(qtd) {
