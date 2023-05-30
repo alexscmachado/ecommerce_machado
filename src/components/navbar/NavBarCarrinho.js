@@ -15,7 +15,7 @@ function NavBarCarrinho(){
 
     return(        
         <Link to="/cart">
-            <div className="carrinho">{qdtProdutos}</div>
+            <div className="carrinho">{qtdProdutos}</div>
             <BiShoppingBag className="carrinho"/> 
         </Link>   
     )
