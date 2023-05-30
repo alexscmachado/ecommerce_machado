@@ -10,13 +10,8 @@ function ItemDetailsContainer(){
      const {itemId}=useParams()
     
      function getProductsDetails(){
-
-
        return new Promise( (resolve, rejected)=>{
-
             resolve(productsDetails.find(p=>p.id ===parseInt(itemId)));
-          
-
         })
     }
 
@@ -26,7 +21,6 @@ function ItemDetailsContainer(){
               .then(result => setMyDetails(result))
         setLoading(false)
         }, 2000)
-
     })
     if(loading){
         return(
@@ -36,13 +30,9 @@ function ItemDetailsContainer(){
         )
     }
     return(
-
         <div>
             <ItemDetails cardItem= {myDetails}/> 
         </div>
-
-      
-
     )
 }
 export default ItemDetailsContainer

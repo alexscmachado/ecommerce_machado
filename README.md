@@ -52,6 +52,15 @@ Nessa entrega realizamos a sincronização do arquivo CountItens.js criado no de
 Caminho da pasta: src --> components --> datails --> ItemDetails.js.\
                   src --> components --> listItens --> CountItens.js.\
 
+ 09/05/23-16/05/23.\
+Nessa entrega realizamos a sincronização do arquivo CountItens.js criado no desafio 4 no arquivo ItemDetail.js e fizemos a configuração destes, ajustando as responsabilidades de quais itens ficariam em cada documentos. Além disso, configuramos estado interno no ItemDetail.js após o onAdd ser acionado no CountItens.js e assim, o ItemCount desapareceu. Adicionamos a lógica para quando um item é adicionado ao carrinho de compras e clicando no botão "Ir para o carrinho".\
+Caminho da pasta: src --> components --> datails --> ItemDetails.js.\
+src --> components --> listItens --> CountItens.js.\
+
+11/05/23-18/05/23.\
+Nessa entrega criamos uma pasta chamada "contexts" e nela criamos o documento "CartContext.js" que vamos utilizar para todo o processo de compra, nessa primeira parte realizamos o mapeamento para que quando o usuário adicionar o produto ao carrinho, armazenar, em forma de objeto, no CartContext.js e nele possui lógicas para adicionar remover produto, limpar todo o carrinho e verificação de item duplicado. Para isso, usamos o conceito de context para criar todo o processo.\
+Caminho da pasta: src --> contexts --> CartContext.js.\
+
 ## Abaixo temos as informações gerais dos arquivos (Readme padrão):
 _______________________________________________________________________________________________________________________________________________________________________
 # Getting Started with Create React App

@@ -1,13 +1,14 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CountItens from "../listItens/CountItens";
 import { Link } from "react-router-dom";
+import CartContextProvider, { useCartContext } from "../../contexts/CartContext";
 
 
 
 function ItemDetails({ cardItem }) {
     const [ammount, setAmmount] = useState(1);
-
-    const naoAdicionado = true;
+    const { addToCart, isInTheCart } = useCartContext();
+    const naoAdicionado = !isInTheCart(cardItem.id);
 
     //const InputComponent = true ? CountItens : InputComponent;
 
@@ -26,16 +27,20 @@ function ItemDetails({ cardItem }) {
                 <p> Descrição do produto: {cardItem.descricao}</p>
                 <p> Em estoque: {cardItem.estoque}</p>
                 {/*<p>Quantidade: <CountItens/></p> - PRIMEIRA APLICAÇÃO DA QUANTIDADE
-            <button type="button" className=" buyButton btn btn-primary">Comprar</button>*/}
+                    <button type="button" className=" buyButton btn btn-primary">Comprar</button>*/}
                 {/* ABAIXO A APLICAÇÃO APÓS A AULA 9 - EVENTOS*/}
                 {naoAdicionado ? <CountItens
                     stock={cardItem.estoque}
                     qtd={ammount}
                     onChangeQtd={handleOnChangeQtd} /> : <Link to="/cart"><button className="buyButton btn btn-primary">
                         Ir para o Carrinho</button></Link>}
-                <button className="buyButton btn btn-primary" onClick={() => {
-                    clearInterval(ammount); setAmmount(1); alert(ammount + " Produto(s) adicionado ao carrinho")
-                }}>Adicionar ao carrinho</button>
+                <button className="buyButton btn btn-primary"
+                    onClick={() => {
+                    setAmmount(1);
+                    addToCart(cardItem.id, ammount);
+                    alert(ammount + " Produto(s) adicionado ao carrinho")
+                    }}>Adicionar ao carrinho
+                 </button>
             </div>
         </div>
     )

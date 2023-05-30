@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 function Itens({ item }) {
     return (
-    
            <div className="itemContainer">
                 <li className="cardItemList">
                 <div className="cardItem">
