@@ -36,8 +36,6 @@ export function Carrinho() {
                 </li>)}
             </ul>
 
-            <button className="buyButton btn btn-primary" onClick={() => removeCart()}>Remover Item</button>
-
             <Link><button className="buyButton btn btn-primary" onClick={() => clear()}>Esvaziar o Carrinho</button></Link>
         </div>
     )
