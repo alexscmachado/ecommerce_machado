@@ -5,7 +5,7 @@ import CartContextProvider, { useCartContext } from "../../contexts/CartContext"
 
 
 
-function ItemDetails({ cardItem }) {
+function ItemDetails({ cardItem, onClickToAdd }) {
     const [ammount, setAmmount] = useState(1);
     const { addToCart, isInTheCart } = useCartContext();
     const naoAdicionado = !isInTheCart(cardItem.id);
@@ -15,10 +15,8 @@ function ItemDetails({ cardItem }) {
         setAmmount(qtd);
     }
 
-    /*function addCart(qtd) {
-        if (cardItem.stock) {
-            console.log(`Item adicionado ao carrinho: ${cardItem.id} com ${qtd}`)
-        }
+    /*function handleOnClick() {
+        onClickToAdd(ammount);
     }*/
 
     return (
@@ -34,16 +32,13 @@ function ItemDetails({ cardItem }) {
                 {naoAdicionado ? <CountItens
                     stock={cardItem.estoque}
                     qtd={ammount}
+                    preco={cardItem.preco}
                     onChangeQtd={handleOnChangeQtd} /> : <Link to="/cart"><button className="buyButton btn btn-primary">
                         Ir para o Carrinho</button></Link>}
-                <button className="buyButton btn btn-primary"
-                    onClick={() => {
-                        setAmmount(1);
-                        addToCart(cardItem.id, ammount);
-                        alert(ammount + " Produto(s) adicionado ao carrinho")
-                    }}>
-                    Adicionar ao carrinho
-                </button>
+                <button className="buyButton btn btn-primary" onClick={() => {
+                    setAmmount(1);
+                    addToCart(cardItem.id, ammount, cardItem.preco);
+                    alert(ammount + " Produto(s) adicionado ao carrinho")}}>Adicionar ao carrinho</button>
             </div>
         </div>
     )

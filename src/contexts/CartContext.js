@@ -1,5 +1,6 @@
 import {createContext, useContext, useState} from 'react';
 import { productsDetails } from '../components/datails/mockDetails/productsDetails';
+import { Timestamp } from 'firebase/firestore';
 
 export const Cart = createContext([]);
 export const CartContext = createContext([]);
@@ -10,20 +11,11 @@ export default function CartContextProvider({defaultValue={}, children}) {
     //{id:1, ammount:5}, {id:2, ammount:7} - exemplo
     //const [item, setItem] = useState()
 
-    const cart = productsDetails.map(p => ({
-        id:p.id,
-        nome: p.nome,
-        imagem: p.imagem,
-        preco: p.preco,
-        qtd: p.qtd,
-        subTotal: p.qtd * p.preco
-    }))
-
     function clear(){
         setItens([]);
     }
 
-    const isInTheCart = (id) => itens.find(i => i.id === id);
+    const isInTheCart = (id) => itens.find(prod => prod.id === id);
 
     function getItemQtd(id){
         if (itens.id ===id){
@@ -31,18 +23,18 @@ export default function CartContextProvider({defaultValue={}, children}) {
         }      
     }
 
-    const total = itens.reduce((sumTotal, p) => {
-        return sumTotal +=p.qtd * parseInt(p.preco)
-    },0)
+    function getTotal() {
+        return itens.reduce((accumulator, currentValue) => parseFloat(accumulator + currentValue.preco), 0)
+    }
 
-    function addToCart(id, qtd){
+    function addToCart(id, qtd, preco, nome, imagem){
         const itemDetails = productsDetails.find(product => product.id === id)
         const cartItens = [...itens];
         const cartValid = cartItens.find((product) => product.id ===id);
 
         if (!cartValid) {
             //cartItens.push({id:id, qtd:qtd});
-            cartItens.push({ ...itemDetails, qtd: qtd });
+            cartItens.push({ ...itemDetails, qtd: qtd, preco: preco, nome: nome, imagem: imagem });
         } 
         else {
             cartValid.qtd = parseInt(cartValid.qtd + qtd);
@@ -68,10 +60,30 @@ export default function CartContextProvider({defaultValue={}, children}) {
             setItens(arrayFilter);
         }
     }
-     
 
+    function createOrder() {
+        const order = {
+            buyer: {
+                name: "Cíntia",
+                phone: "987545123",
+                email: "cintia@gmail.com",
+            },
+            orderDate: Timestamp.fromDate(new Date()),
+            //orderDate: new Date(),
+            total: getTotal(),
+            items: itens.map((p) => ({
+                id: p.id, 
+                nome: p.nome, 
+                preco: p.preco, 
+                qtd: p.qtd})),
+        };
+
+        console.log(order)
+        return order;
+    }
+     
     return(
-        <CartContext.Provider value={{itens, clear, getItemQtd, addToCart, removeCart, isInTheCart}}>
+        <CartContext.Provider value={{itens, clear, getItemQtd, addToCart, removeCart, isInTheCart, getTotal, createOrder}}>
             {children}
         </CartContext.Provider>
     )

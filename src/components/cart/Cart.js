@@ -12,9 +12,9 @@ function CartItem({ cardItem }) {
             </div>
             <div className="cardDetailsItensContent">
                 <p>{cardItem?.nome}</p>
-                <p className=" CardDetailsNome ">R$ {cardItem?.preco}</p>
+                <p className=" CardDetailsNome ">Preço: R$ {cardItem?.preco}</p>
                 <p>Quantidade:  {cardItem?.qtd}</p>
-                <p>Valor Total: R$ {cardItem?.qtd * Number(cardItem?.preco)}</p>
+                <p>Valor Total: R$ {cardItem?.qtd * parseFloat(cardItem?.preco)}</p>
                 <button className="buyButton btn btn-primary" onClick={() => removeCart(cardItem?.id)}>Remover Item</button>
             </div>
         </div>
