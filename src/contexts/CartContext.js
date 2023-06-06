@@ -61,7 +61,7 @@ export default function CartContextProvider({defaultValue={}, children}) {
         }
     }
 
-    function createOrder() {
+    /*function createOrder() {
         const order = {
             buyer: {
                 name: "Cíntia",
@@ -80,10 +80,10 @@ export default function CartContextProvider({defaultValue={}, children}) {
 
         console.log(order)
         return order;
-    }
+    }*/
      
     return(
-        <CartContext.Provider value={{itens, clear, getItemQtd, addToCart, removeCart, isInTheCart, getTotal, createOrder}}>
+        <CartContext.Provider value={{itens, clear, getItemQtd, addToCart, removeCart, isInTheCart, getTotal}}>
             {children}
         </CartContext.Provider>
     )

@@ -10,7 +10,7 @@ import NavBarCarrinho from './components/navbar/NavBarCarrinho';
 import NavBarLogin from './components/navbar/NavBarCarrinho';
 import CartContextProvider, { Cart, CartContext } from './contexts/CartContext';
 import Carrinho from './components/cart/CartPage';
-import './styles/CartPage.css';
+import './styles/Cart.css';
 
 function App() {
   return (

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { BsPlusSquare } from "react-icons/bs";
 import { BsDashSquare } from "react-icons/bs";
 
-//IMPLANTAÇÃO DA QUANTIDADE APÓS A AULA 9 - EVENTOS
 
 function InputCount({ stock, qtd, onChangeQtd }) {
     function onChange(e) {
@@ -33,7 +32,7 @@ function CountItens({ stock, qtd, onChangeQtd }) {
     return (
         <div className="countItens">
             <div className="countItensContainer" >
-                <p>Quantidade: </p>
+                <p className="quantidade">Quantidade: </p>
                 {/*<button onClick={()=> onChange(-1)}>-</button>*/}
                 <BsDashSquare className="dashButton" onClick={() => onChange(-1)} />
                 <p className="inputNumber">{qtd}</p>

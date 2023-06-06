@@ -27,6 +27,9 @@ flex-direction: column;
 
 .inputNumber{
     width: 30px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
 }
 
 .addButton{
@@ -74,4 +77,28 @@ flex-direction: column;
 
 .card-body {
     margin-top: 14px;
+}
+
+.card-title {
+    color: #4b4848;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-text {
+    color: #757474;
+    font-size: 14px;
+}
+
+.card-price {
+    color: #535151;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.quantidade {
+    text-decoration: none;
+    color: #535151;
+    font-size: 17px;
+    /*margin-left: 30px;*/
 }

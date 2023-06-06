@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-.cardDetailsContainer{
+.cartContainer{
     margin-top: 30px;
     display: grid; 
     grid-template-columns: 1fr 1fr; 
@@ -12,60 +12,58 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.cardDetailsImage{
-    width: 250px;
-    height: 280px;
-    text-decoration: none; 
+.cart-image {
+    list-style: none;
+    text-decoration: none;
 }
 
-.buyButton{
+.cart-title {
+    text-decoration: none;
+    color: #4b4848;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cart-price .cart-qtd {
+    text-decoration: none;
+    color: #535151;
+    font-size: 15px;
+}
+
+.cart-ItemTotal {
+    text-decoration: none;
+    color: #535151;
+    font-size: 17px;
+    margin-left: 30px;
+    font-weight: bold;
+}
+
+.Button {
     width: 300px;
     margin-bottom: 10px;
 }
 
-.addButton {
-    margin-top: 10px;
+.buy-Button{
+    width: 300px;
+    margin-bottom: 10px;
+    align-items: end;
+    /*margin-left: 915px;*/
 }
 
-.CardDetailsNome {
+.cartTotal {
     text-decoration: none;
-    color: #4b4848;
-    font-size: 22px;
+    color: #535151;
+    font-size: 20px;
+    /*margin-left: 920px;*/
     font-weight: bold;
+    text-align: center;
 }
 
-.CardDetailsPreco {
+.cartSubTotal {
     text-decoration: none;
     color: #535151;
     font-size: 17px;
-    font-weight: bold;
-    margin-left: 30px;
+    text-align: end;
+    margin-right: 150px;
+    /*margin-left: 920px;*/
 }
-
-.CardDetailsDescricao {
-    text-decoration: none;
-    color:  #757474;
-    font-size: 15px;
-}
-
-.CardDetailsDescricaoItem {
-    text-decoration: none;
-    list-style: none;
-    color: #757474;
-    font-size: 15px;
-    margin-left: 10px;
-}
-
-.CardDetailsEstoque {
-    text-decoration: none;
-    color: #535151;
-    font-size: 15px;
-    margin-left: 30px;
-}
-
-/*.quantidade {
-    text-decoration: none;
-    color: #000;
-    font-size: 17px;
-    margin-left: 30px;
-}*/
