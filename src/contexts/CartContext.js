@@ -1,8 +1,7 @@
 import {createContext, useContext, useState} from 'react';
-import ItemDetails from '../components/datails/ItemDetails';
+import { productsDetails } from '../components/datails/mockDetails/productsDetails';
 
 export const Cart = createContext([]);
-
 export const CartContext = createContext([]);
 export const useCartContext = () => useContext(CartContext);
 
@@ -13,13 +12,30 @@ export default function CartContextProvider({defaultValue={}, children}) {
     
     const isInTheCart = (id) => itens.find(i => i.id === id);
 
+    const cart = productsDetails.map(p => ({
+        id:p.id,
+        nome: p.nome,
+        imagem: p.imagem,
+        preco: p.preco,
+        qtd: p.qtd,
+        subTotal: p.qtd * p.preco
+    }))
+
     function clear(){
         setItens([]);
     }
+    
+    const isInTheCart = (id) => itens.find(i => i.id === id);
 
-    function getItemQtd(){
-        return itens.reduce((accumulator, currentValue) => parseInt(accumulator + currentValue.qtd), 0)
+    function getItemQtd(id){
+        if (itens.id ===id){
+            return itens.reduce((accumulator, currentValue) => parseInt(accumulator + currentValue.qtd), 0)
+        }      
     }
+
+    const total = itens.reduce((sumTotal, p) => {
+        return sumTotal +=p.qtd * parseInt(p.preco)
+    },0)
 
     function addToCart(id, qtd){
         const cartItens = [...itens];
@@ -38,7 +54,8 @@ export default function CartContextProvider({defaultValue={}, children}) {
         const cartItens = [...itens];
         const cartValid = cartItens.find((product) => product.id ===id);
 
-        if(cartValid.qtd >1){
+
+        if(cartValid >1){
             const updatedArray = cartItens.map(item => {
                if (item?.id === id) {
                    cartValid.qtd = parseInt(cartValid.qtd - 1);
@@ -50,7 +67,8 @@ export default function CartContextProvider({defaultValue={}, children}) {
        } else {
            const arrayFilter = cartItens.filter(product => product.id !== id);
            setItens(arrayFilter);
-       } }
+       }
+    }
      
 
     return(

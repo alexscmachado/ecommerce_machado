@@ -10,7 +10,6 @@ function ItemDetails({ cardItem }) {
     const { addToCart, isInTheCart } = useCartContext();
     const naoAdicionado = !isInTheCart(cardItem.id);
 
-    //const InputComponent = true ? CountItens : InputComponent;
 
     function handleOnChangeQtd(qtd) {
         setAmmount(qtd);
@@ -26,9 +25,6 @@ function ItemDetails({ cardItem }) {
                 <p className=" CardDetailsNome ">R$ {cardItem.preco}</p>
                 <p> Descrição do produto: {cardItem.descricao}</p>
                 <p> Em estoque: {cardItem.estoque}</p>
-                {/*<p>Quantidade: <CountItens/></p> - PRIMEIRA APLICAÇÃO DA QUANTIDADE
-                    <button type="button" className=" buyButton btn btn-primary">Comprar</button>*/}
-                {/* ABAIXO A APLICAÇÃO APÓS A AULA 9 - EVENTOS*/}
                 {naoAdicionado ? <CountItens
                     stock={cardItem.estoque}
                     qtd={ammount}
@@ -40,7 +36,7 @@ function ItemDetails({ cardItem }) {
                     addToCart(cardItem.id, ammount);
                     alert(ammount + " Produto(s) adicionado ao carrinho")
                     }}>Adicionar ao carrinho
-                 </button>
+                </button>
             </div>
         </div>
     )

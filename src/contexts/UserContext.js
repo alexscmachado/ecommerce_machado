@@ -1,5 +1,9 @@
-//import { createContext } from "react";
+import React from "react";
+import { createContext, useContext, useState } from "react";
+import { productsDetails } from "../components/datails/mockDetails/productsDetails";
 
-//export const UserContext = createContext("CINTIA");
+const cartContextProduct = createContext([{productsDetails}])
 
-//export const CartCarrinho = createContext([{id:2, ammount:5}])
+export default function CartProvider({defaultValue={}, children}){
+    const [cart, setCart] = useState([])
+}
