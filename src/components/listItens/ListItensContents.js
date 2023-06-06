@@ -1,44 +1,53 @@
-import React,{useState,useEffect} from "react";
-import { produtos } from "./mock/produtos";
+import React,{useState,useEffect, cloneElement} from "react";
+//import { produtos } from "./mock/produtos";
 import ListItens from "./ListItens";
 import { useParams } from "react-router-dom";
 //import {DocumentSnapshot, doc, getDoc, getFirestore} from 'firebase/firestore';
 import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore';
-import Itens from "./Itens";
+//import Itens from "./Itens";
 
-
-// const BatomImage = new URL("./batom.png", import.meta.url)
 
 function ListItensContent(){
     const[loading, setLoading]= useState (true)
     //const[allMyProducts,setAllMyProducts]=useState([])
-    //const[filteredProducts, setFilteredProducts]=useState([])
+    const[filteredProducts, setFilteredProducts]=useState([])
     const {categoryId} = useParams()
 
    const [prodsCol, setProdsCol] = useState([]);
 
-   /*useEffect(() => {
-    setTimeout(() => {
-        const db = getFirestore();
+   useEffect(() => {
+    const db = getFirestore()
 
-        const ItemCollection = collection(db, "item");
-        getDocs(ItemCollection).then((snapshot) => {
+    const ItemCollection = collection(db, "item")
+    getDocs(ItemCollection).then((snapshot) => {
         if (snapshot.size > 0) {
-            const myProducts = snapshot.docs.map(prod => ({id: prod.id, ...prod.data()}))
+            const myProducts = snapshot.docs.map((prod) => ({
+                id: prod.id,
+                ... prod.data(),
+            }))
             setProdsCol(myProducts);
-        }})
-    }, 2000);    
-   },[]);*/
+            setLoading()
+        }
+    })
+   },[])
 
-   const db = getFirestore();
+   useEffect(() => {
+    if (categoryId) {
+        const result = prodsCol.filter((p) => p.categoryId === categoryId)
+        setFilteredProducts(result)
+    }
+   }, [categoryId, prodsCol])
 
+   /*const db = getFirestore();
    function listarProdutos() {
     return getDocs(collection(db, "item")).then((snapshot) => {
         if (snapshot.size > 0) {
-            const myProducts = snapshot.docs.map(prod => ({id: prod.id, ...prod.data()}));
-            setProdsCol(myProducts);
+            const myProducts = snapshot.docs.map(prod => ({
+                id: prod.id, 
+                ...prod.data(),}))
+            setProdsCol(myProducts)
+            setLoading(false)
         }})
-        .finally(setLoading(false));
     }
     
     function getCategoriaProdutos(categoria) {
@@ -59,32 +68,7 @@ function ListItensContent(){
         } else {
             listarProdutos();
         }
-    }, [categoryId]);
-
-    /* getProdutos(){
-        return new Promise( (resolve, rejected) =>{
-            resolve(prodsCol)
-        })
-    }
-
-    useEffect(
-        ()=>{
-            setTimeout(()=>{
-                getProdutos()
-                      .then(result => {setAllMyProducts(result);setFilteredProducts(result)})
-                     setLoading(false)
-            },2000); 
-        },[]
-    )
-    useEffect(
-        ()=>{
-            if(categoryId){
-                setFilteredProducts(allMyProducts.filter(p => p.categoryId===categoryId))
-            }else{
-                setFilteredProducts(allMyProducts)
-            }
-        },[categoryId]  
-    );*/
+    }, [categoryId]);*/
     
     if(loading){
         return(
@@ -97,9 +81,7 @@ function ListItensContent(){
 
     return(   
         <div className="itemContainerList">
-           {/*<ListItens itens ={filteredProducts}/> {/*Essa é a tag original que criamos anteriormente*/}
-
-           <ListItens itens={prodsCol} /> {/*Essa é a aplicação com Firebase*/}
+           <ListItens itens={categoryId ? filteredProducts : prodsCol} /> {/*Essa é a aplicação com Firebase*/}
         </div>
     )
 }

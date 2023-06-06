@@ -65,6 +65,13 @@ Nessa entrega criamos uma ItemCollection no Google Firestore, na qual a coleçã
 Caminho da pasta ListItens: src --> components --> listItens --> ListItensContents.js.\
 Caminho da pasta Datails: src --> components --> datails --> ItemDetailsContainer.js.\
 
+23/05/23-30/05/23.\
+Nessa entrega criamos uma order dentro da coleção no Google Firestore. Logo após, criamos as funções "createOrder", que é responsável por criar a ordem com o nome do comprador, e a função "salvarOrder", que salva a ordem no firebase, gerando o número da ordem.\
+As atualizões foram nos seguintes arquivos, segue Caminho da pasta: .\
+  1) src --> contexts --> CartContext.js.\
+  2) src --> components --> cart --> CartPage.js.\
+
+
 ## Abaixo temos as informações gerais dos arquivos (Readme padrão):
 _______________________________________________________________________________________________________________________________________________________________________
 # Getting Started with Create React App

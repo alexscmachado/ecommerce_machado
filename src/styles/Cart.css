@@ -15,6 +15,8 @@
 .cart-image {
     list-style: none;
     text-decoration: none;
+    width: 250px;
+    height: 200px;
 }
 
 .cart-title {
