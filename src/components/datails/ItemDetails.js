@@ -19,6 +19,7 @@ function ItemDetails({ cardItem, onClickToAdd }) {
         onClickToAdd(ammount);
     }*/
 
+
     return (
         <div className="container  cardDetailsContainer">
             <div className="cardDetailImageContent" >
