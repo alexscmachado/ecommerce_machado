@@ -13,6 +13,12 @@ function CartItem({ }) {
     function ClickOnChangeQtd(qtd) {
         setAmmount(qtd);
     }
+    
+    function getProductsDetails() {
+        return new Promise((resolve, rejected) => {
+            resolve(productsDetails.find(p => p.id === parseInt(itemId)));
+        })
+    }
 
     function getProductsDetails() {
         return new Promise((resolve, rejected) => {
