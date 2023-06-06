@@ -23,7 +23,7 @@ function App() {
               <Route exact path="/category/:categoryId" element={<ListItensContents />} />;
               <Route exact path="/cart" element={<Carrinho />} />;
               <Route exact path="/item/:itemId" element={<ItemDetailsContainer />} />;
-              <Route exact path="/cart" element={<Carrinho />} />;
+              <Route exact path="/cart" element={<Carrinho/>} />;
               <Route exact path="/cart" element={<NavBarLogin />} />;
               <Route exact path="/*" element={<p>"Página não encontrada"</p>} />
             </Routes>

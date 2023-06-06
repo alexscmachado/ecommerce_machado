@@ -27,6 +27,8 @@ export default function CartContextProvider({defaultValue={}, children}) {
     
     const isInTheCart = (id) => itens.find(i => i.id === id);
 
+    const isInTheCart = (id) => itens.find(i => i.id === id);
+
     function getItemQtd(id){
         if (itens.id ===id){
             return itens.reduce((accumulator, currentValue) => parseInt(accumulator + currentValue.qtd), 0)
@@ -57,17 +59,17 @@ export default function CartContextProvider({defaultValue={}, children}) {
 
         if(cartValid >1){
             const updatedArray = cartItens.map(item => {
-               if (item?.id === id) {
-                   cartValid.qtd = parseInt(cartValid.qtd - 1);
-                   return cartValid;
-               }
-               return item;
-           });
-           setItens(updatedArray);
-       } else {
-           const arrayFilter = cartItens.filter(product => product.id !== id);
-           setItens(arrayFilter);
-       }
+                if (item?.id === id) {
+                    cartValid.qtd = parseInt(cartValid.qtd - 1);
+                    return cartValid;
+                }
+                return item;
+            });
+            setItens(updatedArray);
+        } else {
+            const arrayFilter = cartItens.filter(product => product.id !== id);
+            setItens(arrayFilter);
+        }
     }
      
 

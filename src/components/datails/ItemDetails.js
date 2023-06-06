@@ -15,6 +15,13 @@ function ItemDetails({ cardItem }) {
         setAmmount(qtd);
     }
 
+    /*function addCart(qtd) {
+        if (cardItem.stock) {
+            console.log(`Item adicionado ao carrinho: ${cardItem.id} com ${qtd}`)
+        }
+    }*/
+
+
     return (
         <div className="container  cardDetailsContainer">
             <div className="cardDetailImageContent" >
@@ -32,10 +39,11 @@ function ItemDetails({ cardItem }) {
                         Ir para o Carrinho</button></Link>}
                 <button className="buyButton btn btn-primary"
                     onClick={() => {
-                    setAmmount(1);
-                    addToCart(cardItem.id, ammount);
-                    alert(ammount + " Produto(s) adicionado ao carrinho")
-                    }}>Adicionar ao carrinho
+                        setAmmount(1);
+                        addToCart(cardItem.id, ammount);
+                        alert(ammount + " Produto(s) adicionado ao carrinho")
+                    }}>
+                    Adicionar ao carrinho
                 </button>
             </div>
         </div>
