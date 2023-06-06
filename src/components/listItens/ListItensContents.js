@@ -26,7 +26,7 @@ function ListItensContent(){
                 ... prod.data(),
             }))
             setProdsCol(myProducts);
-            setLoading()
+            setLoading(false)
         }
     })
    },[])
