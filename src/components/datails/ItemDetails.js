@@ -21,6 +21,7 @@ function ItemDetails({ cardItem }) {
         }
     }*/
 
+
     return (
         <div className="container  cardDetailsContainer">
             <div className="cardDetailImageContent" >

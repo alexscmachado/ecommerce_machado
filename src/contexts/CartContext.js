@@ -9,6 +9,8 @@ export default function CartContextProvider({defaultValue={}, children}) {
     const [itens, setItens] = useState([]);
     //{id:1, ammount:5}, {id:2, ammount:7} - exemplo
     //const [item, setItem] = useState()
+    
+    const isInTheCart = (id) => itens.find(i => i.id === id);
 
     const cart = productsDetails.map(p => ({
         id:p.id,
@@ -22,6 +24,8 @@ export default function CartContextProvider({defaultValue={}, children}) {
     function clear(){
         setItens([]);
     }
+    
+    const isInTheCart = (id) => itens.find(i => i.id === id);
 
     const isInTheCart = (id) => itens.find(i => i.id === id);
 
@@ -51,6 +55,7 @@ export default function CartContextProvider({defaultValue={}, children}) {
     function removeCart(id) {
         const cartItens = [...itens];
         const cartValid = cartItens.find((product) => product.id ===id);
+
 
         if(cartValid >1){
             const updatedArray = cartItens.map(item => {
