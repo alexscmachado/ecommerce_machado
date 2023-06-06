@@ -10,29 +10,10 @@ function ItemDetails({ cardItem }) {
     const { addToCart, isInTheCart } = useCartContext();
     const naoAdicionado = !isInTheCart(cardItem.id);
 
-    /* Tentando fazer a validação se o item existe no carrinho ou não:
-    const valorCart = useCartContext();
-    
-    //let produtQtd = 0;
-    //valorCart.itens.forEach(p => produtQtd += p.ammount);
-    let productId = [];
-    valorCart.find(p=> productId.id === p.id);
-
-    const naoAdicionado = true;
-    if (productId.id !== cardItem.id){
-        naoAdicionado=false;
-    }*/
-
 
     function handleOnChangeQtd(qtd) {
         setAmmount(qtd);
     }
-
-    /*function addCart(qtd) {
-        if (cardItem.stock) {
-            console.log(`Item adicionado ao carrinho: ${cardItem.id} com ${qtd}`)
-        }
-    }*/
 
     return (
         <div className="container  cardDetailsContainer">

@@ -17,9 +17,10 @@ function NavBarCarrinho() {
 
     return (
         <Link to="/cart">
-            <div className="qtdCarrinho">{qdtProdutos}</div>
-            <BiShoppingBag className="carrinho" />
-        </Link>
+            <div className="carrinho">{qtdProdutos}</div>
+            <BiShoppingBag className="carrinho"/> 
+        </Link>   
+
     )
 }
 export default NavBarCarrinho
@@ -51,8 +52,7 @@ export function Carrinho(cardItem) {
             <ul>
                 {itens.map(p => <li key={p.id}>
                     <p>Produto: {p?.id} - Qtd: {p.qtd}</p>
-                    <button className="buyButton btn btn-primary" onClick={() => removeCart(p.id)}>Remover Item</button>
- </li>)}
+                    <button className="buyButton btn btn-primary" onClick={() => removeCart(p.id)}>Remover Item</button></li>)}
             </ul>
                 <p></p>
                 <Link><button className="buyButton btn btn-primary" onClick={() => clear()}>Esvaziar o Carrinho</button></Link>
