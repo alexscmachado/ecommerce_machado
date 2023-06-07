@@ -15,11 +15,6 @@ function ItemDetails({ cardItem, onClickToAdd }) {
         setAmmount(qtd);
     }
 
-    /*function handleOnClick() {
-        onClickToAdd(ammount);
-    }*/
-
-
     return (
         <div className="container  cardDetailsContainer">
             <div className="cardDetailImageContent" >
@@ -38,7 +33,7 @@ function ItemDetails({ cardItem, onClickToAdd }) {
                         Ir para o Carrinho</button></Link>}
                 <button className="buyButton btn btn-primary" onClick={() => {
                     setAmmount(1);
-                    addToCart(cardItem.id, ammount, cardItem.preco);
+                    addToCart(cardItem.id, ammount, cardItem.preco, cardItem.nome, cardItem.imagem);
                     alert(ammount + " Produto(s) adicionado ao carrinho")}}>Adicionar ao carrinho</button>
             </div>
         </div>
