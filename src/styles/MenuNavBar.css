@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: solid gray 1px;
+    align-items: center;
+    padding: 15px;  
+}
+
+.login{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    width: 300px;
+    margin-left: 100px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.LoginText {
+    text-decoration: none;
+    color: #000;
+}
+
+.loginIcon{
+    font-size: 20px;
+    text-decoration: none;
+    color: #000;
+}
+
+#pesquisar{
+    width: 210px;
+    height: 20px;
+    border: none;
+    margin-left: 20px; 
+    font-family: 'Rubik', sans-serif;
+}
+
+.busca{
+    display: flex;
+    flex-direction: row;
+    border: solid 2px gray;
+    border-radius: 10px;
+    align-items: center;
+    margin-left: 90px;
+}
+
+.logo{
+    margin-left: 100px;
+    font-family: "Raleway";
+    text-align: center;
+}
+
+.logo .menuLink{
+    text-decoration: none;
+    color: #000;    
+}
+
+.loginLink{
+    list-style: none;
+    text-decoration: none;
+}
+
+.lupa{
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.carrinho{
+    font-size: 25px;
+    margin-right: 100px;
+    margin-left: 20px;
+    text-decoration: none;
+    color: #000;
+}
+
+.qtdCarrinho {
+    font-size: 20px;
+    margin-right: 100px;
+    margin-left: 20px;
+    text-align: center;
+    text-decoration: none;
+    list-style: none;
+    color: #000;
+}
+
+.menuContents{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+     gap: 80px;   
+}
+
+.menuBar .menuItens{
+    list-style: none;
+    font-size: 16px;
+    border-top:  2px;
+    padding: 20px;   
+}
+
+.menuItens:hover{
+    border-top: solid;
+    border-color: rgb(248, 142, 159) ;
+}
+
+.menuItens .menuLink{
+    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+}
