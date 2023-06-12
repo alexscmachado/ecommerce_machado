@@ -1,16 +1,11 @@
-
-import React,{useState,useEffect, cloneElement} from "react";
-//import { produtos } from "./mock/produtos";
+import React,{useState,useEffect} from "react";
 import ListItens from "./ListItens";
 import { useParams } from "react-router-dom";
-//import {DocumentSnapshot, doc, getDoc, getFirestore} from 'firebase/firestore';
 import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore';
-//import Itens from "./Itens";
 
 
 function ListItensContent(){
     const[loading, setLoading]= useState (true)
-    //const[allMyProducts,setAllMyProducts]=useState([])
     const[filteredProducts, setFilteredProducts]=useState([])
     const {categoryId} = useParams()
 

@@ -4,13 +4,10 @@ import { Link } from "react-router-dom";
 import { useCartContext } from "../../contexts/CartContext";
 
 function NavBarCarrinho() {
-    //const valorCart = useContext(Cart);
     const valor = useCartContext();
     console.log(valor)
 
-    //let qdtProdutos = 0
     const qtdProdutos = valor?.getItemQtd() || 0
-    //valor.itens.forEach(p => qdtProdutos += p.ammount);
 
     return (
         <Link to="/cart">

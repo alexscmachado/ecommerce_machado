@@ -1,6 +1,4 @@
 import {createContext, useContext, useState} from 'react';
-import { productsDetails } from '../components/datails/mockDetails/productsDetails';
-import { Timestamp } from 'firebase/firestore';
 
 export const Cart = createContext([]);
 export const CartContext = createContext([]);
@@ -67,7 +65,6 @@ export default function CartContextProvider({defaultValue={}, children}) {
                 phone: "987545123",
                 email: "cintia@gmail.com",
             },
-            //orderDate: Timestamp.fromDate(new Date()),
             orderDate: new Date(),
             total: getTotal(),
             items: itens.map((p) => ({

@@ -1,5 +1,4 @@
-import React from "react";
-import { createContext, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { productsDetails } from "../components/datails/mockDetails/productsDetails";
 
 const cartContextProduct = useContext([{productsDetails}])
