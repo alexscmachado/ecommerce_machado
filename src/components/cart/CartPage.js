@@ -5,13 +5,12 @@ import { collection, addDoc, getFirestore } from 'firebase/firestore';
 import { Row, Col } from "react-bootstrap";
 
 
-
 function Carrinho() {
     const { itens, clear, getTotal, createOrder } = useCartContext();
     const frete = 10.5;
     const desconto = 0.10;
     const [varFrete, setVarFrete] = useState(0)
-    
+
     //tentando criar uma função que zere o valor do frete quando o carrinho estiver vário ou quando clicar 
     //no botão "esvaziar carrinho"
     function handleOnChangeFrete(FreteVar) {

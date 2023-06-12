@@ -10,7 +10,7 @@ import NavBarCarrinho from './components/navbar/NavBarCarrinho';
 import NavBarLogin from './components/navbar/NavBarCarrinho';
 import CartContextProvider, { Cart, CartContext } from './contexts/CartContext';
 import Carrinho from './components/cart/CartPage';
-import './styles/CartPage.css';
+import './styles/Cart.css';
 
 function App() {
   return (
@@ -24,11 +24,8 @@ function App() {
               <Route exact path="/category/:categoryId" element={<ListItensContents />} />;
               <Route exact path="/cart" element={<Carrinho />} />;
               <Route exact path="/item/:itemId" element={<ItemDetailsContainer />} />;
-              <Route exact path="/cart" element={<Carrinho/>} />;
-              <Route exact path="/cart" element={<NavBarLogin />} />;
               <Route exact path="/*" element={<p>"Página não encontrada"</p>} />
             </Routes>
-            {/*<ListItensContents /> {/*Coloquei a tag aqui para visualizar na página*/}
             <section>
             </section>
           </div>

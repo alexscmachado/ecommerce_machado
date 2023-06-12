@@ -1,10 +1,12 @@
-import React,{useState,useEffect} from "react";
+
+import React,{useState,useEffect, cloneElement} from "react";
 //import { produtos } from "./mock/produtos";
 import ListItens from "./ListItens";
 import { useParams } from "react-router-dom";
 //import {DocumentSnapshot, doc, getDoc, getFirestore} from 'firebase/firestore';
-import {collection, doc, getDoc, getDocs, getFirestore} from 'firebase/firestore';
+import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore';
 //import Itens from "./Itens";
+
 
 function ListItensContent(){
     const[loading, setLoading]= useState (true)

@@ -9,7 +9,7 @@ export const useCartContext = () => useContext(CartContext);
 export default function CartContextProvider({defaultValue={}, children}) {
     const [itens, setItens] = useState([]);
     
-    const isInTheCart = (id) => itens.find(i => i.id === id);
+    const isInTheCart = (id) => itens.find(prod => prod.id === id);
 
     function clear(){
         setItens([]);
@@ -32,7 +32,7 @@ export default function CartContextProvider({defaultValue={}, children}) {
         const cartValid = cartItens.find((product) => product.id ===id);
 
         if (!cartValid) {
-            cartItens.push({id: id, qtd: qtd, preco: preco, nome: nome, imagem: imagem});
+            cartItens.push({id: id, qtd: qtd, preco: preco, nome: nome, imagem: imagem });
         } 
         else {
             cartValid.qtd = parseInt(cartValid.qtd + qtd);
@@ -67,8 +67,8 @@ export default function CartContextProvider({defaultValue={}, children}) {
                 phone: "987545123",
                 email: "cintia@gmail.com",
             },
-            orderDate: Timestamp.fromDate(new Date()),
-            //orderDate: new Date(),
+            //orderDate: Timestamp.fromDate(new Date()),
+            orderDate: new Date(),
             total: getTotal(),
             items: itens.map((p) => ({
                 id: p.id, 
@@ -87,3 +87,4 @@ export default function CartContextProvider({defaultValue={}, children}) {
         </CartContext.Provider>
     )
 }
+

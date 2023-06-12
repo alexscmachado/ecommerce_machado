@@ -1,5 +1,3 @@
-//import CountItens from "../../listItens/CountItens";
-
 export const productsDetails = [
     {
         id:1,
@@ -8,7 +6,6 @@ export const productsDetails = [
         preco: "30.78",
         imagem:"https://images.unsplash.com/photo-1555050455-f96634b5cba6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
         categoria:"labios",
-        //estoque: <CountItens stock={13}/>,
         estoque: 13,
     },
     {
@@ -18,7 +15,6 @@ export const productsDetails = [
         preco: "20.00",
         categoria:"olhos",
         imagem:"https://images.unsplash.com/photo-1620804587331-effc68d47d7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80",
-        //estoque: <CountItens stock={18}/>,
         estoque: 18,
     },
     {

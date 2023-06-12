@@ -7,7 +7,6 @@ function CartItem({ cardItem }) {
 function CartItem({ cardItem }) {
     const {  getItemQtd, removeCart, sumTotal } = useCartContext();
 
-
     return (
         <div className="container  cartContainer">
             <div className="cardDetailImageContent" >
