@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useCartContext } from "../../contexts/CartContext";
 import CartItem from "../cart/Cart";
 import { collection, addDoc, getFirestore } from 'firebase/firestore';
 import { Row, Col } from "react-bootstrap";
 
 
-function Carrinho(cardItem) {
+
+function Carrinho() {
     const { itens, clear, getTotal, createOrder } = useCartContext();
     const frete = 10.5;
     const desconto = 0.10;

@@ -3,7 +3,7 @@ import React,{useState,useEffect} from "react";
 import ListItens from "./ListItens";
 import { useParams } from "react-router-dom";
 //import {DocumentSnapshot, doc, getDoc, getFirestore} from 'firebase/firestore';
-import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore';
+import {collection, doc, getDoc, getDocs, getFirestore} from 'firebase/firestore';
 //import Itens from "./Itens";
 
 function ListItensContent(){
@@ -13,7 +13,7 @@ function ListItensContent(){
     const {categoryId} = useParams()
 
    const [prodsCol, setProdsCol] = useState([]);
-    
+
    useEffect(() => {
     const db = getFirestore()
 
@@ -36,7 +36,6 @@ function ListItensContent(){
         setFilteredProducts(result)
     }
    }, [categoryId, prodsCol])
-
     
     if(loading){
         return(

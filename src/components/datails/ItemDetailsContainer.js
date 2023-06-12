@@ -1,13 +1,13 @@
 import React,{useState,useEffect} from "react";
 import ItemDetails from "./ItemDetails";
 import { useParams } from "react-router-dom";
-import { doc, getDoc, getFirestore, where, query} from 'firebase/firestore';
+import {doc, getDoc, getFirestore} from 'firebase/firestore';
 
 
 function ItemDetailsContainer(){
-     const [myDetails, setMyDetails]=useState([])
-     const [loading, setLoading]=useState(true)
-     const {itemId}=useParams()
+    const [myDetails, setMyDetails]=useState([])
+    const [loading, setLoading]=useState(true)
+    const {itemId}=useParams()
 
     const getDataFromFirebase = async () => {
         const db = getFirestore();
@@ -33,7 +33,7 @@ function ItemDetailsContainer(){
     }
     return(
         <div>
-            <ItemDetails cardItem={myDetails} /> {/*Essa é a aplicação com Firebase*/}
+            <ItemDetails cardItem={myDetails}/> {/*Essa é a aplicação com Firebase*/}
         </div>
     )
 }
