@@ -46,6 +46,11 @@ Nessa entrega criamos o roteamento e navegação do projeto, para que o usuário
   3) Adicionamos "import { BrowserRouter, Routes ,Route} from 'react-router-dom'" no arquivo App.js.\
   4) Para inclusão do ícones, utilizamos "npm install react-icons --save".\
  Com isso, temos os componentes completos: NavBar com carrinho, Catálogo e Detalhes do Produto.\
+  
+09/05/23-16/05/23.\
+Nessa entrega realizamos a sincronização do arquivo CountItens.js criado no desafio 4 no arquivo ItemDetail.js e fizemos a configuração destes, ajustando as responsabilidades de quais itens ficariam em cada documentos. Além disso, configuramos estado interno no ItemDetail.js após o onAdd ser acionado no CountItens.js e assim, o ItemCount desapareceu. Adicionamos a lógica para quando um item é adicionado ao carrinho de compras e clicando no botão "Ir para o carrinho".\
+Caminho da pasta: src --> components --> datails --> ItemDetails.js.\
+                  src --> components --> listItens --> CountItens.js.\
 
  09/05/23-16/05/23.\
 Nessa entrega realizamos a sincronização do arquivo CountItens.js criado no desafio 4 no arquivo ItemDetail.js e fizemos a configuração destes, ajustando as responsabilidades de quais itens ficariam em cada documentos. Além disso, configuramos estado interno no ItemDetail.js após o onAdd ser acionado no CountItens.js e assim, o ItemCount desapareceu. Adicionamos a lógica para quando um item é adicionado ao carrinho de compras e clicando no botão "Ir para o carrinho".\

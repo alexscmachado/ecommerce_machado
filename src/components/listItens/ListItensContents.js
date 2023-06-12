@@ -1,3 +1,4 @@
+
 import React,{useState,useEffect, cloneElement} from "react";
 //import { produtos } from "./mock/produtos";
 import ListItens from "./ListItens";
@@ -26,7 +27,7 @@ function ListItensContent(){
                 ... prod.data(),
             }))
             setProdsCol(myProducts);
-            setLoading()
+            setLoading(false)
         }
     })
    },[])
@@ -37,38 +38,6 @@ function ListItensContent(){
         setFilteredProducts(result)
     }
    }, [categoryId, prodsCol])
-
-   /*const db = getFirestore();
-   function listarProdutos() {
-    return getDocs(collection(db, "item")).then((snapshot) => {
-        if (snapshot.size > 0) {
-            const myProducts = snapshot.docs.map(prod => ({
-                id: prod.id, 
-                ...prod.data(),}))
-            setProdsCol(myProducts)
-            setLoading(false)
-        }})
-    }
-    
-    function getCategoriaProdutos(categoria) {
-        const queryProd = query(collection(db, "item"), where("categoria","==",categoria));
-        getDocs(queryProd).then((snapshot) => {
-            if (snapshot.size > 0) {
-                const myProducts = snapshot.docs.map(prod => ({id: prod.id, ...prod.data()}));
-                setProdsCol(myProducts);
-            } else {
-                setProdsCol([]);
-            }
-        })
-    }
-
-    useEffect(() => {
-        if (!!categoryId) {
-            getCategoriaProdutos(categoryId);
-        } else {
-            listarProdutos();
-        }
-    }, [categoryId]);*/
     
     if(loading){
         return(
