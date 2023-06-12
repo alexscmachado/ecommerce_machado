@@ -1,27 +1,29 @@
 import React,{useState,useEffect} from "react";
-import { productsDetails } from "./mockDetails/productsDetails";
 import ItemDetails from "./ItemDetails";
 import { useParams } from "react-router-dom";
+import {doc, getDoc, getFirestore} from 'firebase/firestore';
 
 
 function ItemDetailsContainer(){
-     const [myDetails, setMyDetails]=useState([])
-     const [loading, setLoading]=useState(true)
-     const {itemId}=useParams()
-    
-     function getProductsDetails(){
-       return new Promise( (resolve, rejected)=>{
-            resolve(productsDetails.find(p=>p.id ===parseInt(itemId)));
-        })
+    const [myDetails, setMyDetails]=useState([])
+    const [loading, setLoading]=useState(true)
+    const {itemId}=useParams()
+
+    const getDataFromFirebase = async () => {
+        const db = getFirestore();
+        const CardCollection = doc(db, "item", `${itemId}`);
+        const docSnap = await getDoc(CardCollection)
+
+        if (docSnap.exists()) {
+            setMyDetails({ ...docSnap.data(), id: itemId });
+            setLoading(false)
+        }
     }
 
-    useEffect(()=>{
-        setTimeout(()=>{
-            getProductsDetails()
-              .then(result => setMyDetails(result))
-        setLoading(false)
-        }, 2000)
-    })
+    useEffect(() => {
+        getDataFromFirebase()
+      }, [itemId])
+    
     if(loading){
         return(
             <div className="spinner-grow text-secondary spinnerListItens" role="status">
@@ -31,7 +33,7 @@ function ItemDetailsContainer(){
     }
     return(
         <div>
-            <ItemDetails cardItem= {myDetails}/> 
+            <ItemDetails cardItem={myDetails}/> {/*Essa é a aplicação com Firebase*/}
         </div>
     )
 }

@@ -97,6 +97,36 @@
 .loginLink{
     list-style: none;
     text-decoration: none;
+}
+
+.lupa{
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.carrinho{
+    font-size: 25px;
+    margin-right: 100px;
+    margin-left: 20px;
+    text-decoration: none;
+    color: #000;
+}
+
+.qtdCarrinho {
+    font-size: 20px;
+    margin-right: 100px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.logo .menuLink{
+    text-decoration: none;
+    color: #000;    
+}
+
+.loginLink{
+    list-style: none;
+    text-decoration: none;
     list-style: none;
 }
 
