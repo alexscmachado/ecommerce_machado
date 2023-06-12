@@ -1,53 +1,51 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useCartContext } from "../../contexts/CartContext";
 import CartItem from "../cart/Cart";
-import { useParams } from "react-router-dom";
-import { productsDetails } from "../datails/mockDetails/productsDetails";
+import { collection, addDoc, getFirestore } from 'firebase/firestore';
+import { Row, Col } from "react-bootstrap";
 
 
-function Carrinho(cardItem) {
-    //const valor = useCartContext();
-    const { itens, setItens, getItemQtd, clear, removeCart } = useCartContext();
-    const [loading, setLoading] = useState(true);
-    //const [itens, setItens] = useState([]);
-    const { itemId } = useParams();
-
-
-    function getProductsDetails() {
-        return new Promise((resolve, rejected) => {
-            resolve(productsDetails.find(p => p.id === parseInt(itemId)));
-        })
+function Carrinho() {
+    const { itens, clear, getTotal, createOrder } = useCartContext();
+    const frete = 10.5;
+    const desconto = 0.10;
+    const [varFrete, setVarFrete] = useState(0)
+    
+    //tentando criar uma função que zere o valor do frete quando o carrinho estiver vário ou quando clicar 
+    //no botão "esvaziar carrinho"
+    function handleOnChangeFrete(FreteVar) {
+        setVarFrete(FreteVar);
     }
 
-    /*useEffect(()=>{
-            getProductsDetails()
-              .then(result => setItens(result))
-        setLoading(false)
-        })*/
+    function salvarOrder() {
+        const order = createOrder();
+        const db = getFirestore();
+        const refCollection = collection(db, "orders");
+        addDoc(refCollection, order).then(({id}) => console.log(`O número da sua ordem de é: ${id}`))
+    }
 
     return (
-        <div>
-            {/*<CartItem cardItem={itens} />
-            <div className="cardDetailImageContent">
-                {itens.map(p => <div key={p.id}><img src={p.imagem} className=" cardDetailsImage" alt="Foto Produto" /></div>)}
-            </div>
-            <ul>
-                {itens.map(p => <li key={p.id}>
-                    <p>Nome: {itens.nome}</p>
-                    <p>Produto: {p?.id}</p>
-                    <p>Qtd: {p.qtd}</p>
-                    <button className="buyButton btn btn-primary" onClick={() => removeCart(p.id)}>Remover Item</button>
-                </li>)}
-            </ul>
-                <p></p>
-                <Link><button className="buyButton btn btn-primary" onClick={() => clear()}>Esvaziar o Carrinho</button></Link>*/}
-
-            <ul>
-                {itens.map(p => <li key={p.id}><CartItem cardItem={p} /></li>)}
-            </ul>
-            <p></p>
-            <Link><button className="buyButton btn btn-primary" onClick={() => clear()}>Esvaziar o Carrinho</button></Link>
+        <div className="cart-container">
+            <Row>
+                <Col sm={8}>
+                    <ul>
+                        {itens.map((p) => (
+                            <CartItem key={p.id} cardItem={p} />
+                        ))}
+                    </ul>
+                </Col>
+                <Col sm={4}>
+                    <p className="cartSubTotal">Subtotal: R$ {getTotal()}</p>
+                    <p className="cartSubTotal">Descontos: R${(getTotal() * desconto).toFixed(2)}</p>
+                    <p className="cartSubTotal">Frete: R$ {frete}</p>
+                    <p className="cartTotal">Total: R$ {(getTotal() - (getTotal() * desconto) + frete).toFixed(2)}</p>
+                    <button className="Button btn btn-secondary" onClick={createOrder}>Criar Ordem</button>
+                    <p></p>
+                    <button className="Button btn btn-secondary" onClick={salvarOrder}>Salvar Ordem</button>
+                    <p></p>
+                    <button className="Button btn btn-secondary" onClick={() => { clear(); handleOnChangeFrete(0); setVarFrete(0) }}>Esvaziar o Carrinho</button>
+                </Col>
+            </Row>
         </div>
     )
 }

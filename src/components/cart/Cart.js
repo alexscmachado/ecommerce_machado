@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { useCartContext } from "../../contexts/CartContext";
 
-
 function CartItem({ cardItem }) {
-    const { removeCart } = useCartContext();
+    const {  getItemQtd, removeCart, sumTotal } = useCartContext();
+
 
     return (
-        <div className="container  cardDetailsContainer">
+        <div className="container  cartContainer">
             <div className="cardDetailImageContent" >
                 <img src={cardItem?.imagem} className=" cardDetailsImage" alt="Laptop" />
             </div>

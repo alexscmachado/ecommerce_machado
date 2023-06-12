@@ -15,13 +15,6 @@ function ItemDetails({ cardItem }) {
         setAmmount(qtd);
     }
 
-    /*function addCart(qtd) {
-        if (cardItem.stock) {
-            console.log(`Item adicionado ao carrinho: ${cardItem.id} com ${qtd}`)
-        }
-    }*/
-
-
     return (
         <div className="container  cardDetailsContainer">
             <div className="cardDetailImageContent" >
@@ -40,7 +33,7 @@ function ItemDetails({ cardItem }) {
                 <button className="buyButton btn btn-primary"
                     onClick={() => {
                         setAmmount(1);
-                        addToCart(cardItem.id, ammount);
+                        addToCart(cardItem.id, ammount, cardItem.preco, cardItem.nome, cardItem.imagem);
                         alert(ammount + " Produto(s) adicionado ao carrinho")
                     }}>
                     Adicionar ao carrinho
