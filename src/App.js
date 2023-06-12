@@ -1,13 +1,11 @@
 import NavBar from './components/navbar/NavBar';
 import React from 'react';
 import './styles/ListItensContents.css';
-import './styles/NavBar.css';
+import './styles/MenuNavBar.css';
 import ListItensContents from './components/listItens/ListItensContents';
 import ItemDetailsContainer from './components/datails/ItemDetailsContainer';
 import "./styles/itemListDetails.css";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import NavBarCarrinho from './components/navbar/NavBarCarrinho';
-import NavBarLogin from './components/navbar/NavBarCarrinho';
 import CartContextProvider, { Cart, CartContext } from './contexts/CartContext';
 import Carrinho from './components/cart/CartPage';
 import './styles/Cart.css';

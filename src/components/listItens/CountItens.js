@@ -18,7 +18,6 @@ function InputCount({ stock, qtd, onChangeQtd }) {
     )
 }
 
-//mudei o nome da função ButtonCount para CountItens, na qual estávamos usando
 function CountItens({ stock, qtd, onChangeQtd }) {
     function onChange(value) {
         let newValue = parseInt(qtd) + value

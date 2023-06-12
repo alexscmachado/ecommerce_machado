@@ -1,15 +1,11 @@
-import React,{useState,useEffect, cloneElement} from "react";
-//import { produtos } from "./mock/produtos";
+import React,{useState,useEffect} from "react";
 import ListItens from "./ListItens";
 import { useParams } from "react-router-dom";
-//import {DocumentSnapshot, doc, getDoc, getFirestore} from 'firebase/firestore';
 import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore';
-//import Itens from "./Itens";
 
 
 function ListItensContent(){
     const[loading, setLoading]= useState (true)
-    //const[allMyProducts,setAllMyProducts]=useState([])
     const[filteredProducts, setFilteredProducts]=useState([])
     const {categoryId} = useParams()
 
@@ -37,38 +33,6 @@ function ListItensContent(){
         setFilteredProducts(result)
     }
    }, [categoryId, prodsCol])
-
-   /*const db = getFirestore();
-   function listarProdutos() {
-    return getDocs(collection(db, "item")).then((snapshot) => {
-        if (snapshot.size > 0) {
-            const myProducts = snapshot.docs.map(prod => ({
-                id: prod.id, 
-                ...prod.data(),}))
-            setProdsCol(myProducts)
-            setLoading(false)
-        }})
-    }
-    
-    function getCategoriaProdutos(categoria) {
-        const queryProd = query(collection(db, "item"), where("categoria","==",categoria));
-        getDocs(queryProd).then((snapshot) => {
-            if (snapshot.size > 0) {
-                const myProducts = snapshot.docs.map(prod => ({id: prod.id, ...prod.data()}));
-                setProdsCol(myProducts);
-            } else {
-                setProdsCol([]);
-            }
-        })
-    }
-
-    useEffect(() => {
-        if (!!categoryId) {
-            getCategoriaProdutos(categoryId);
-        } else {
-            listarProdutos();
-        }
-    }, [categoryId]);*/
     
     if(loading){
         return(

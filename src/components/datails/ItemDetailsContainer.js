@@ -34,7 +34,7 @@ function ItemDetailsContainer(){
     }
     return(
         <div>
-            <ItemDetails cardItem={myDetails} /> {/*Essa é a aplicação com Firebase*/}
+            <ItemDetails cardItem={myDetails} />
         </div>
     )
 }
