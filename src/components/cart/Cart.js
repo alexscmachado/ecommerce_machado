@@ -1,6 +1,8 @@
 import React from "react";
 import { useCartContext } from "../../contexts/CartContext";
 
+function CartItem({ cardItem }) {
+    const {  getItemQtd, removeCart, sumTotal } = useCartContext();
 
 function CartItem({ cardItem }) {
     const {  getItemQtd, removeCart, sumTotal } = useCartContext();
