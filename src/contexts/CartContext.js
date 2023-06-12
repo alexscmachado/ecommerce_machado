@@ -7,27 +7,14 @@ export const useCartContext = () => useContext(CartContext);
 
 export default function CartContextProvider({defaultValue={}, children}) {
     const [itens, setItens] = useState([]);
-    //{id:1, ammount:5}, {id:2, ammount:7} - exemplo
-    //const [item, setItem] = useState()
     
     const isInTheCart = (id) => itens.find(i => i.id === id);
-
-    const cart = productsDetails.map(p => ({
-        id:p.id,
-        nome: p.nome,
-        imagem: p.imagem,
-        preco: p.preco,
-        qtd: p.qtd,
-        subTotal: p.qtd * p.preco
-    }))
 
     function clear(){
         setItens([]);
     }
     
-    const isInTheCart = (id) => itens.find(i => i.id === id);
-
-    const isInTheCart = (id) => itens.find(i => i.id === id);
+    const isInTheCart = (id) => itens.find(prod => prod.id === id);
 
     function getItemQtd(id){
         if (itens.id ===id){
@@ -44,7 +31,7 @@ export default function CartContextProvider({defaultValue={}, children}) {
         const cartValid = cartItens.find((product) => product.id ===id);
 
         if (!cartValid) {
-            cartItens.push({id:id, qtd:qtd});
+            cartItens.push({id: id, qtd: qtd, preco: preco, nome: nome, imagem: imagem});
         } 
         else {
             cartValid.qtd = parseInt(cartValid.qtd + qtd);
@@ -79,24 +66,3 @@ export default function CartContextProvider({defaultValue={}, children}) {
         </CartContext.Provider>
     )
 }
-
-
-//const carrinho = useContext(ItemDetails)
-//carrinho.forEach(p => p.cardItem)
-//console.log(carrinho)
-
-
-/*import React, { useContext } from "react";
-import { UserContext } from "./UserContext";
-import { CartCarrinho } from "./UserContext";
-
-//export default function CartContext() {
-//    const usuario = useContext(UserContext)
-//    return (<div>O usuário logado é: {usuario}</div>)
-//}
-
-export default function Carrinho() {
-    const carrinho = useContext(CartCarrinho)
-    return (<div>Qtd no carrinho</div>)
-}*/
-
