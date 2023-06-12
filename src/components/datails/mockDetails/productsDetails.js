@@ -13,7 +13,6 @@ export const productsDetails = [
     },
     {
         id:2,
-
         nome:"Delineador em gel",
         descricao:"cor preto, com pincel",
         preco: "20.00",

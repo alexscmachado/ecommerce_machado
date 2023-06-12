@@ -5,6 +5,7 @@ import { collection, addDoc, getFirestore } from 'firebase/firestore';
 import { Row, Col } from "react-bootstrap";
 
 
+
 function Carrinho() {
     const { itens, clear, getTotal, createOrder } = useCartContext();
     const frete = 10.5;

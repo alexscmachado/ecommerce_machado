@@ -23,7 +23,7 @@ function ItemDetailsContainer(){
     useEffect(() => {
         getDataFromFirebase()
       }, [itemId])
-    
+
     if(loading){
         return(
             <div className="spinner-grow text-secondary spinnerListItens" role="status">

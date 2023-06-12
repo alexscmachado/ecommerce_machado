@@ -1,5 +1,6 @@
 import {createContext, useContext, useState} from 'react';
 import { productsDetails } from '../components/datails/mockDetails/productsDetails';
+import { Timestamp } from 'firebase/firestore';
 
 export const Cart = createContext([]);
 export const CartContext = createContext([]);
@@ -13,7 +14,7 @@ export default function CartContextProvider({defaultValue={}, children}) {
     function clear(){
         setItens([]);
     }
-    
+
     const isInTheCart = (id) => itens.find(prod => prod.id === id);
 
     function getItemQtd(id){
@@ -22,11 +23,11 @@ export default function CartContextProvider({defaultValue={}, children}) {
         }      
     }
 
-    const total = itens.reduce((sumTotal, p) => {
-        return sumTotal +=p.qtd * parseInt(p.preco)
-    },0)
+    function getTotal() {
+        return itens.reduce((accumulator, currentValue) => parseFloat(accumulator + currentValue.preco), 0)
+    }
 
-    function addToCart(id, qtd){
+    function addToCart(id, qtd, preco, nome, imagem){
         const cartItens = [...itens];
         const cartValid = cartItens.find((product) => product.id ===id);
 
@@ -58,10 +59,30 @@ export default function CartContextProvider({defaultValue={}, children}) {
             setItens(arrayFilter);
         }
     }
-     
 
+    function createOrder() {
+        const order = {
+            buyer: {
+                name: "Cíntia",
+                phone: "987545123",
+                email: "cintia@gmail.com",
+            },
+            orderDate: Timestamp.fromDate(new Date()),
+            //orderDate: new Date(),
+            total: getTotal(),
+            items: itens.map((p) => ({
+                id: p.id, 
+                nome: p.nome, 
+                preco: p.preco, 
+                qtd: p.qtd})),
+        };
+
+        console.log(order)
+        return order;
+    }
+     
     return(
-        <CartContext.Provider value={{itens, clear, getItemQtd, addToCart, removeCart, isInTheCart}}>
+        <CartContext.Provider value={{itens, clear, getItemQtd, addToCart, removeCart, isInTheCart, getTotal, createOrder}}>
             {children}
         </CartContext.Provider>
     )
