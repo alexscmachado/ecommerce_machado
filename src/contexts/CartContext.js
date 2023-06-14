@@ -6,8 +6,6 @@ export const useCartContext = () => useContext(CartContext);
 
 export default function CartContextProvider({defaultValue={}, children}) {
     const [itens, setItens] = useState([]);
-    
-    const isInTheCart = (id) => itens.find(prod => prod.id === id);
 
     function clear(){
         setItens([]);
